@@ -28,7 +28,7 @@
 
 
 <div class="row">
-    {% for product in product %}
+    {% for product in product.object_list %}
 
         <div class="col-md-3 mb-6">
             <div class="card" style="width: 18rem;">
@@ -43,6 +43,16 @@
         </div>
     {% endfor %}
 </div> 
+
+<div class = "mx-auto">
+    <div class = 'text-center'>
+{% for pg in product.paginator.page_range %}
+
+<a href="?page={{pg}}" class = "btn btn-light btn-sm {%if product.number == pg %} activate {% endif %}" >{{pg}}</a>
+
+{% endfor %}
+    </div>
+</div>
 
 
 {% endblock content %} 
