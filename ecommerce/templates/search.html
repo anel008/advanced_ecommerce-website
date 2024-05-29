@@ -2,9 +2,26 @@
 {% load static %}
 
 {% block content %}
-
-
-
-
-
+<div class="container">
+  <h2>Search Results for "{{ qr }}"</h2>
+  {% if product %}
+    <div class="row">
+      {% for prod in product %}
+        <div class="col-md-3 mb-6">
+          <div class="card" style="width: 18rem;">
+            <a class="imgover" href="{{ prod.get_url }}"><img style="height: 18rem; width: 18rem;" src="{{ prod.img.url }}" class="card-img-top" alt="{{ prod.name }}"></a>
+            <div class="card-body">
+              <h5 class="card-title">{{ prod.name }}</h5>
+              <p class="card-text">{{ prod.desc|truncatewords:17 }}</p><br>
+              <p class="card-text">Rs/- {{ prod.price }}</p>
+              <a href="{{ prod.get_url }}" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No products found matching your query.</p>
+  {% endif %}
+</div>
 {% endblock content %}
