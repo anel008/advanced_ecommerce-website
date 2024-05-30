@@ -7,14 +7,16 @@
 
 
 <div class="row">
+    
     <div class="col-md-6">
-        <img style="height:18rem; width: 18rem;" src="{{ pr.img.url }}" class="img-fluid" alt="{{ pr.name }}">
-    </div>
-    <div class="col-md-6">
+        <div class="col-md-6">
+            <img style="height:18rem; width: 18rem;" src="{{ pr.img.url }}" class="img-fluid" alt="{{ pr.name }}">
+        </div>
         <h2>{{ pr.name }}</h2>
         <p>{{ pr.desc }}</p>
         <p>Price: Rs/- {{ pr.price }}</p>
         <p>Stock: {{ pr.stock }}</p>
+        <a href="{%url 'addcart' pr.id%}" class="btn btn-primary">ADD TO CART</a>
     </div>
 </div>
 

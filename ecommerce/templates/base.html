@@ -20,7 +20,10 @@
                 <a class="nav-link active" aria-current="page" href="{%url 'home'%}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">login</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +37,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <a href="{%url 'cartdetails'%}"   class="nav-link" aria-disabled="true">Cart</a>
               </li>
             </ul>
             <form class="d-flex" role="search" action="{% url 'search' %}" method="get">

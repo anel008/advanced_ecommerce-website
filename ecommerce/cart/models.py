@@ -1,5 +1,5 @@
 from django.db import models
-from shop.models import Products
+from shop.models import Products,Categ
 
 # Create your models here.
 
@@ -16,6 +16,7 @@ class Items(models.Model):
     prodt = models.ForeignKey(Products,on_delete=models.CASCADE)
     cart = models.ForeignKey(CartList,on_delete=models.CASCADE)
     quan = models.IntegerField()
+    active = models.BooleanField(default=True)
 
     def __str__ (self):
 

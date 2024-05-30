@@ -2,5 +2,27 @@
 {% load static %}
 
 {% block content %}
+<h1>Cart Products </h1><br>
+
+
+
+
+<ol class="list-group list-group-numbered">
+  {% for i in cartitems %}
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">
+        <img style="height:10rem; width: 10rem;" class="mb-1" src = "{{i.prodt.img.url}}" alt = "{{i.prodt.name}}"/>
+      </div>
+      <small>{{i.prodt.quan}}</small>
+      <small>NAME: {{i.prodt.name}}</small> <br>
+      <small>ID: {{i.prodt.id}}</small> <br>
+        <small>Rs/- {{i.prodt.price}}</small>
+    </div>
+    <span class="badge text-bg-primary rounded-pill">14</span>
+  {%endfor%}
+</ol>
+
 
 {% endblock content %}
+
