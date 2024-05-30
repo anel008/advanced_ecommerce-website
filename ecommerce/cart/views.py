@@ -34,11 +34,15 @@ def add_cart(request, product_id):
         ct.save()
     try:
         c_items = Items.objects.get(prodt = prod,cart = ct)
-        if c_items.quan < c_items.prodt.stock :
+        if c_items.quan < c_items.prodt.stock or c_items.prodt.stock != 0 :
+            prod.stock -= 1
             c_items.quan += 1
+        prod.save()
         c_items.save()
     except Items.DoesNotExist:
         c_items = Items.objects.create(prodt = prod, quan = 1, cart = ct)
+        prod.stock -= 1
+        prod.save()
         c_items.save()
     return redirect('cartdetails')
 
@@ -49,8 +53,12 @@ def min_cart(request,product_id):
     c_items = Items.objects.get(prodt = prod, cart = ct)
     if c_items.quan > 1 :
         c_items.quan -= 1
+        prod.stock += 1
+        prod.save()
         c_items.save()
     else :
+        prod.stock = prod.stock + c_items.quan
+        prod.save()
         c_items.delete()
     return redirect('cartdetails')
 
@@ -59,6 +67,8 @@ def cart_delete(request,product_id):
     ct = CartList.objects.get(cart_id = c_id(request))
     prod = Products.objects.get(id =product_id)
     c_items = Items.objects.get(prodt = prod, cart = ct)
+    prod.stock = prod.stock + c_items.quan
+    prod.save()
     c_items.delete()
     return redirect('cartdetails')
 

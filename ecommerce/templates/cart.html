@@ -7,7 +7,7 @@
 
 
 
-<ol class="list-group list-group-numbered">
+<ol class="list-group ">
   {% for i in cartitems %}
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -16,14 +16,16 @@
       </div>
       <small>NAME: {{i.prodt.name}}</small> <br>
       <small>STOCK: {{i.prodt.stock}}</small> <br>
-        <small>Rs/- {{i.prodt.price}} x 1</small>
+      <small>Rs/- {{i.prodt.price}} x 1</small><br>
+      <small>TOTAL Rs/- {{i.total}} x {{i.quan}}</small> <br>
         <a class="badge text-bg-primary rounded-pill" href="{%url 'delete' i.prodt.id %}">DELETE</a>
     </div>
-    <a href="{%url 'decrement' i.prodt.id %}">-&nbsp &nbsp</a><span class="badge text-bg-primary rounded-pill">QUANTITY: {{i.quan}}</span><a href="{%url 'addcart' i.prodt.id %}"> &nbsp &nbsp+</a><br>
     
+    <a href="{%url 'decrement' i.prodt.id %}">-&nbsp &nbsp</a><span class="badge text-bg-primary rounded-pill">QUANTITY: {{i.quan}}</span><a href="{%url 'addcart' i.prodt.id %}"> &nbsp &nbsp+</a><br>
   {%endfor%}
+  
 </ol>
-
+<h2> Total cash to be paid = {{total}} </h2>
 
 {% endblock content %}
 
