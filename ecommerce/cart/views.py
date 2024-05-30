@@ -43,10 +43,22 @@ def add_cart(request, product_id):
     return redirect('cartdetails')
 
 
-def min_cart(request):
-    pass
+def min_cart(request,product_id):
+    ct = CartList.objects.get(cart_id = c_id(request))
+    prod = Products.objects.get(id =product_id)
+    c_items = Items.objects.get(prodt = prod, cart = ct)
+    if c_items.quan > 1 :
+        c_items.quan -= 1
+        c_items.save()
+    else :
+        c_items.delete()
+    return redirect('cartdetails')
 
 
-def cart_delete(request):
-    pass
+def cart_delete(request,product_id):
+    ct = CartList.objects.get(cart_id = c_id(request))
+    prod = Products.objects.get(id =product_id)
+    c_items = Items.objects.get(prodt = prod, cart = ct)
+    c_items.delete()
+    return redirect('cartdetails')
 

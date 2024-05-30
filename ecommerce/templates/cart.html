@@ -14,12 +14,13 @@
       <div class="fw-bold">
         <img style="height:10rem; width: 10rem;" class="mb-1" src = "{{i.prodt.img.url}}" alt = "{{i.prodt.name}}"/>
       </div>
-      <small>{{i.prodt.quan}}</small>
       <small>NAME: {{i.prodt.name}}</small> <br>
-      <small>ID: {{i.prodt.id}}</small> <br>
-        <small>Rs/- {{i.prodt.price}}</small>
+      <small>STOCK: {{i.prodt.stock}}</small> <br>
+        <small>Rs/- {{i.prodt.price}} x 1</small>
+        <a class="badge text-bg-primary rounded-pill" href="{%url 'delete' i.prodt.id %}">DELETE</a>
     </div>
-    <span class="badge text-bg-primary rounded-pill">14</span>
+    <a href="{%url 'decrement' i.prodt.id %}">-&nbsp &nbsp</a><span class="badge text-bg-primary rounded-pill">QUANTITY: {{i.quan}}</span><a href="{%url 'addcart' i.prodt.id %}"> &nbsp &nbsp+</a><br>
+    
   {%endfor%}
 </ol>
 
