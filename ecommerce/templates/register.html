@@ -1,6 +1,20 @@
 {% extends "base.html" %}
-{% load static %}
 
-{% block content %}
+{%block content%}
 
-{% endblock content %}
+<form action="registerin" method='POST'><br>
+{% csrf_token %}
+<label>username</label> <input type='text'  name='username'><br>
+<label>firstname</label> <input type='text'  name='firstname'><br>
+<label>lastname</label> <input type='text'  name='lastname'><br>
+<label>password</label> <input type='password' name='password1'><br>
+<label>confirm password</label> <input type='password'  name='password2'><br>
+<input type ='submit' value='register'>
+</form>
+
+{%  for message in messages%}
+
+    <h1><i>{{message}}</h1></i>
+
+{% endfor %}
+{%endblock content%}

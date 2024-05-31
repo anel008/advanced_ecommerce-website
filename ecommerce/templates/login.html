@@ -3,4 +3,13 @@
 
 {% block content %}
 
+<form action='login' method='POST'><br>
+{% csrf_token %}
+<label>username</label> <input type='text'  name='username'><br>
+<label>password</label> <input type='password' name='password'><br>
+<input type ='submit' value='login'>
+</form>
+
+
+
 {% endblock content %}
