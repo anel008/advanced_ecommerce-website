@@ -5,8 +5,8 @@
 
 <form action='login' method='POST'><br>
 {% csrf_token %}
-<label>username</label> <input type='text'  name='username'><br>
-<label>password</label> <input type='password' name='password'><br>
+<label  class="form-label" >username</label> <input class="form-control" aria-describedby="passwordHelpBlock" type='text'  name='username'><br>
+<label for="inputPassword5" class="form-label">password</label> <input id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock"  type='password' name='password'><br>
 <input type ='submit' value='login'>
 </form>
 
